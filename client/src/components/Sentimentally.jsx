@@ -26,7 +26,8 @@ class Sentimentally extends React.Component {
   }
 
   init (profileId) {
-    axios.get(`/subscriptions/${this.props.profileId}`)
+    console.log('init profileId', profileId)
+    axios.get(`/subscriptions/${profileId}`)
       .then((subscriptions) => {
         let keywordIds = subscriptions.data.map(keyword => {
           return keyword.keyword_id
