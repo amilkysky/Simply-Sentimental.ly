@@ -29,6 +29,7 @@ const createSubscription = async (keyword, profileId) => {
   try {
     const keywordInfoObj = await checkIfKeywordExists(keyword)
     const exists = keywordInfoObj.found
+console.log('exists cheK', exists)
     let keywordIdResponse = keywordInfoObj.keywordIdResponse
     let streamKeywordsArray = keywordInfoObj.streamKeywordsArray
 
@@ -40,6 +41,7 @@ const createSubscription = async (keyword, profileId) => {
     const subscripsArray = await getUserSubscriptions(profileId)
 
     const keywordIdExists = checkIfUserHasSubscription(subscripsArray, keywordIdResponse)
+console.log('keywordIdExists cheK', keywordIdExists)
 
     if (!keywordIdExists) {
       subscribeUserToKeyword(profileId, keywordIdResponse)

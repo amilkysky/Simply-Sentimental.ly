@@ -55,6 +55,7 @@ const checkIfUserHasSubscription = (subscripsArray, keywordIdResponse) => {
 }
 
 const subscribeUserToKeyword = (profileId, keywordIdResponse) => {
+  console.log('profId n keywordIdResp CHEK', profileId, keywordIdResponse)
   dbModule.knex('subscriptions').insert({
     profile_id: profileId,
     keyword_id: keywordIdResponse[0]

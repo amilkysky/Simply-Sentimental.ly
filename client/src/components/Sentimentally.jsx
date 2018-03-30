@@ -30,10 +30,11 @@ class Sentimentally extends React.Component {
         let keywordIds = subscriptions.data.map(keyword => {
           return keyword.keyword_id
         })
+        console.log('keywordIds CHEK 1', keywordIds)
         let keywords = subscriptions.data.map(keyword => {
           return keyword.keyword
         })
-        console.log('keywordIds CHEK', keywordIds)
+        console.log('keywordIds CHEK 2', keywordIds)
         let selectedKeywordId = keywordIds[0]
         console.log('selectedKeywordId CHEK', selectedKeywordId)
 
