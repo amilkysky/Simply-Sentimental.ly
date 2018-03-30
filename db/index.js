@@ -1,5 +1,8 @@
 require('dotenv').config()
 
+const pg = require('pg');
+pg.defaults.ssl = true;
+
 const knex = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL,
@@ -12,5 +15,3 @@ db.plugin('registry')
 
 module.exports.db = db
 module.exports.knex = knex
-
-const schema = require('./schema.js')
