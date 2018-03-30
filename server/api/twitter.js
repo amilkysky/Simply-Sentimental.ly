@@ -29,6 +29,7 @@ const createSubscription = async (keyword, profileId) => {
   try {
     const keywordInfoObj = await checkIfKeywordExists(keyword)
     const exists = keywordInfoObj.found
+console.log('twit profileId cheK', profileId)    
 console.log('exists cheK', exists)
     let keywordIdResponse = keywordInfoObj.keywordIdResponse
     let streamKeywordsArray = keywordInfoObj.streamKeywordsArray

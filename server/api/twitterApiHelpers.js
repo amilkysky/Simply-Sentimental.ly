@@ -39,6 +39,7 @@ const processUniqueKeyword = async (keyword) => {
 }
 
 const getUserSubscriptions = async (profileId) => {
+  console.log('profileId chEK', profileId)
   let subscripsArray = await dbModule.knex('subscriptions').where({'profile_id': profileId}).select('keyword_id', 'profile_id')
   return subscripsArray
 }

@@ -17,6 +17,7 @@ class Sentimentally extends React.Component {
   }
 
   componentDidMount () {
+    console.log('this.props.profileId chek', this.props.profileId)
     this.init(this.props.profileId)
 
     setInterval(() => {
