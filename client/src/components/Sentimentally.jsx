@@ -33,7 +33,9 @@ class Sentimentally extends React.Component {
         let keywords = subscriptions.data.map(keyword => {
           return keyword.keyword
         })
+        console.log('keywordIds CHEK', keywordIds)
         let selectedKeywordId = keywordIds[0]
+        console.log('selectedKeywordId CHEK', selectedKeywordId)
 
         this.props.dispatch(actions.initializeKeywords(keywordIds, keywords, selectedKeywordId))
         this.props.dispatch(actions.fetchTweets(selectedKeywordId))
