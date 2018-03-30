@@ -7,6 +7,7 @@ const getKeywordIdByKeyword = (keyword) => {
 }
 
 const getSubscriptionsByUserId = (userId) => {
+  console.log('userId CHEK', userId)
   return knex('subscriptions').innerJoin('keywords', 'subscriptions.keyword_id', 'keywords.id').where({
     'profile_id': userId
   }).select('*')

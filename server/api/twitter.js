@@ -40,8 +40,13 @@ console.log('exists cheK', exists)
 
     const subscripsArray = await getUserSubscriptions(profileId)
 
+    // check to make sure these two variables are defined, so that subscribeUserTo.. function works
+    console.log('keywordIdResponse cheK', keywordIdResponse)
+    console.log('subscripsArray cheK', subscripsArray)
+
     const keywordIdExists = checkIfUserHasSubscription(subscripsArray, keywordIdResponse)
-console.log('keywordIdExists cheK', keywordIdExists)
+
+    console.log('keywordIdExists cheK', keywordIdExists)
 
     if (!keywordIdExists) {
       subscribeUserToKeyword(profileId, keywordIdResponse)
