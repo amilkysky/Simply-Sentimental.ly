@@ -60,7 +60,7 @@ const subscribeUserToKeyword = async (profileId, keywordIdResponse) => {
     profile_id: profileId,
     keyword_id: keywordIdResponse[0]
   })
-  .returning(*)
+  .returning('*')
   console.log('newSubscription chek', newSubscription)
 }
 
