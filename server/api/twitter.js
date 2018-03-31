@@ -31,6 +31,7 @@ const createSubscription = async (keyword, profileId) => {
     if (keyword === 'init') {
       const keywordInfoObj = await checkIfKeywordExists(keyword)
       const streamKeywordsArray = keywordInfoObj.streamKeywordsArray
+      console.log('streamKeywordsArray CHEK', streamKeywordsArray)
       const stream = activateTwitStreamForAllKeywords(T, streamKeywordsArray)
       return null;
     }
