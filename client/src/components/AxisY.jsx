@@ -9,8 +9,11 @@ class AxisY extends React.Component {
     const width = this.props.width - margin.left - margin.right
 
     const y = d3.scale.linear()
-      .domain([-5, 5])
+      // .domain([-5, 5])
       .range([height, 0])
+
+      y.domain(d3.extent(data, (d) => { return d.close }))
+
 
     const yAxis = d3.svg.axis()
       .scale(y)
