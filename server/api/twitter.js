@@ -29,8 +29,7 @@ const createSubscription = async (keyword, profileId) => {
   try {
     const keywordInfoObj = await checkIfKeywordExists(keyword)
     const exists = keywordInfoObj.found
-console.log('twit profileId cheK', profileId)    
-console.log('exists cheK', exists)
+
     let keywordIdResponse = keywordInfoObj.keywordIdResponse
     let streamKeywordsArray = keywordInfoObj.streamKeywordsArray
 
@@ -41,9 +40,6 @@ console.log('exists cheK', exists)
 
     const subscripsArray = await getUserSubscriptions(profileId)
 
-    // check to make sure these two variables are defined, so that subscribeUserTo.. function works
-    console.log('keywordIdResponse cheK', keywordIdResponse)
-    console.log('subscripsArray cheK', subscripsArray)
 
     const keywordIdExists = checkIfUserHasSubscription(subscripsArray, keywordIdResponse)
 

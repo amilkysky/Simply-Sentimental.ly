@@ -21,8 +21,6 @@ router.post('/subscribe', async (req, res) => {
 })
 
 router.get('/keywordId/:keyword', async (req, res) => {
-  console.log('keyword', req.params.keyword)
-
   const keywordId = await knexHelpers.getKeywordIdByKeyword(req.params.keyword)
   res.send(keywordId)
 })
@@ -50,14 +48,8 @@ router.get('/initializeD3/:keyword', async (req, res) => {
   let sentiGraphScores = []
 
   let timeStampObj = makeDatetimeString()
-  console.log('timeStampObj CHEK', timeStampObj)
-
   const mostRecentScore = await knexHelpers.getLatestSentimentsByKeyword(req.params.keyword, timeStampObj)
-  console.log('mostRecentScore CHEK', mostRecentScore)
-
   const filteredRecentScores = mostRecentScore.filter(score => score.sentiment !== 0)
-  console.log('filteredRecentScores CHEK', filteredRecentScores)
-
   let totalRecentTweets = mostRecentScore.length
   let averageRecentScore = null
 
@@ -75,7 +67,6 @@ router.get('/initializeD3/:keyword', async (req, res) => {
 
   for (let i = 0; i < 11; i++) {
     const pastScore = await knexHelpers.getSentimentsByKeywordWithinTimePeriod(req.params.keyword, timeStampObj)
-    console.log('pastScore CHEK', pastScore)
     let totalTweets = pastScore.length
     let averageScore = null
 
@@ -95,11 +86,8 @@ router.get('/initializeD3/:keyword', async (req, res) => {
 })
 
 router.get('/updateSentiGraphScores/:selectedKeywordId', async (req, res) => {
-  console.log('selectedKeywordId CHEK', req.params.selectedKeywordId)
   const mostRecentSentimentScores = await knexHelpers.getLatestSentimentsByKeyword(req.params.selectedKeywordId, makeDatetimeString())
-  console.log('mostRecentSentimentScores CHEK', mostRecentSentimentScores)
   const filteredSentimentScores = mostRecentSentimentScores.filter(score => score.sentiment !== 0)
-  console.log('filteredSentimentScores CHEK', filteredSentimentScores)
   res.send(filteredSentimentScores)
 })
 

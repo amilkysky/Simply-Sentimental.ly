@@ -17,7 +17,6 @@ class Sentimentally extends React.Component {
   }
 
   componentDidMount () {
-    console.log('this.props.profileId chek', this.props.profileId)
     this.init(this.props.profileId)
 
     setInterval(() => {
@@ -26,19 +25,15 @@ class Sentimentally extends React.Component {
   }
 
   init (profileId) {
-    console.log('init profileId', profileId)
     axios.get(`/subscriptions/${profileId}`)
       .then((subscriptions) => {
         let keywordIds = subscriptions.data.map(keyword => {
           return keyword.keyword_id
         })
-        console.log('keywordIds CHEK 1', keywordIds)
         let keywords = subscriptions.data.map(keyword => {
           return keyword.keyword
         })
-        console.log('keywordIds CHEK 2', keywordIds)
         let selectedKeywordId = keywordIds[0]
-        console.log('selectedKeywordId CHEK', selectedKeywordId)
 
         this.props.dispatch(actions.initializeKeywords(keywordIds, keywords, selectedKeywordId))
         this.props.dispatch(actions.fetchTweets(selectedKeywordId))
@@ -50,10 +45,7 @@ class Sentimentally extends React.Component {
   }
 
   async initializeGraphSentiScores (keywordId) {
-    console.log('in REACT keywordId chek', keywordId)
-
     const sentiGraphScores = await axios.get(`/initializeD3/${keywordId}`)
-    console.log('in REACT sentiGraphScores chek', sentiGraphScores)
     this.props.dispatch(actions.updateTweetSentiments(sentiGraphScores.data))
   }
 
@@ -67,8 +59,6 @@ class Sentimentally extends React.Component {
     } else {
       latestScores = latestScoresResult.data
     }
-
-    console.log('in REACT latest chek', latestScores)
 
     let scores = this.props.update
     scores.splice(scores.length - 1, 1)
@@ -84,12 +74,9 @@ class Sentimentally extends React.Component {
       averageScore = 0
     } else {
       const mappedLatestScores = latestScores.map(score => score.sentiment)
-      console.log('REACT mappedLatestScores chek', mappedLatestScores)
-      console.log('REACT totalTweets chek', totalTweets)
 
       const summedScore = mappedLatestScores.reduce((total, amount) => total + amount, 0)
       averageScore = Math.ceil(summedScore / totalTweets)
-      console.log('REACT averageScore chek', averageScore)
     }
 
     newScores.unshift({date: -5, close: averageScore})
@@ -99,7 +86,6 @@ class Sentimentally extends React.Component {
 
   selectKeywordIdHandler (event) {
     let keyword = event.target.value
-    console.log('keyword', keyword)
     axios.get(`/keywordId/${keyword}`)
       .then((keywordId) => {
         console.log('keywordId', keywordId)

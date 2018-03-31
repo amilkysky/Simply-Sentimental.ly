@@ -17,7 +17,6 @@ class Keywords extends React.Component {
   }
 
   newSubscriptionHandler () {
-    console.log('new subscript profileId', this.props.profileId)
     axios.post('/subscribe', {
       keyword: this.props.keywordInput,
       profileId: this.props.profileId
