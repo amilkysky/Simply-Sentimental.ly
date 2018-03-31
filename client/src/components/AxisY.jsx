@@ -12,9 +12,6 @@ class AxisY extends React.Component {
       .domain([-5, 5])
       .range([height, 0])
 
-      // y.domain(d3.extent(data, (d) => { return d.close }))
-
-
     const yAxis = d3.svg.axis()
       .scale(y)
       .orient('left')
