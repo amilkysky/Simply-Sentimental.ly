@@ -45,9 +45,11 @@ const createSubscription = async (keyword, profileId) => {
 
     console.log('keywordIdExists cheK', keywordIdExists)
 
+    let newSubscription
     if (!keywordIdExists) {
-      subscribeUserToKeyword(profileId, keywordIdResponse)
+      newSubscription = await subscribeUserToKeyword(profileId, keywordIdResponse)
     }
+    console.log('twitter newSubscription chek', newSubscription)
 
     const stream = activateTwitStreamForAllKeywords(T, streamKeywordsArray)
 

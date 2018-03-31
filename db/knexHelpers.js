@@ -7,7 +7,6 @@ const getKeywordIdByKeyword = (keyword) => {
 }
 
 const getSubscriptionsByUserId = (userId) => {
-  console.log('userId CHEK', userId)
   return knex('subscriptions').innerJoin('keywords', 'subscriptions.keyword_id', 'keywords.id').where({
     'profile_id': userId
   }).select('*')
@@ -33,7 +32,6 @@ const getLatestSentimentsByKeyword = async (keywordId, timeStampObj) => {
 }
 
 const getSentimentsByKeywordWithinTimePeriod = async (keywordId, timeStampObj) => {
-  console.log('any message like here oR CHEK!!!', keywordId, timeStampObj)
   return await knex('sentiments').innerJoin('tweets', 'sentiments.tweet_id', '=', 'tweets.id')
     .where('keyword_id', keywordId)
     .andWhere('tweets.created_at', '>', timeStampObj.time5MinAgo)

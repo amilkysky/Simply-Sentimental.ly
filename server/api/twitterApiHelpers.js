@@ -54,12 +54,14 @@ const checkIfUserHasSubscription = (subscripsArray, keywordIdResponse) => {
   return foundKeywordId
 }
 
-const subscribeUserToKeyword = (profileId, keywordIdResponse) => {
+const subscribeUserToKeyword = async (profileId, keywordIdResponse) => {
   console.log('profId n keywordIdResp CHEK', profileId, keywordIdResponse)
-  dbModule.knex('subscriptions').insert({
+  let newSubscription = await dbModule.knex('subscriptions').insert({
     profile_id: profileId,
     keyword_id: keywordIdResponse[0]
   })
+  .returning(*)
+  console.log('newSubscription chek', newSubscription)
 }
 
 const activateTwitStreamForAllKeywords = (T, streamKeywordsArray) => {
