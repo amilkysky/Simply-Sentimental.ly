@@ -21,7 +21,7 @@ class AxisX extends React.Component {
       .append('text')
       .attr('x', 6)
       .attr('dx', '.71em')
-      .style('text-anchor', 'end')
+      .style('text-anchor', 'start')
       .text('Minutes Ago')
 
 
