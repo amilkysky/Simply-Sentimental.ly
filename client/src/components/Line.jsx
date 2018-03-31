@@ -21,7 +21,6 @@ class Line extends React.Component {
 
     data.forEach((d) => {
       x.domain(d3.extent(data, (d) => { return d.date }))
-      y.domain(d3.extent(data, (d) => { return d.close }))
     })
 
     const newline = line(data)
