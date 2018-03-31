@@ -14,6 +14,7 @@ class Sentimentally extends React.Component {
     this.init = this.init.bind(this)
     this.selectKeywordIdHandler = this.selectKeywordIdHandler.bind(this)
     this.fetchLatest = this.fetchLatest.bind(this)
+    this.beginStreamHandler = this.beginStreamHandler.bind(this)
   }
 
   componentDidMount () {
@@ -121,10 +122,26 @@ class Sentimentally extends React.Component {
       })
   }
 
+  beginStreamHandler () {
+    axios.post('/subscribe', {
+      keyword: 'init',
+      profileId: 1
+    })
+      .then((nullResponse) => {
+        this.props.dispatch(actions.fetchTweets(this.props.selectedKeywordId))
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   render () {
     return (
       <div>
         <h1>Sentimental.ly</h1>
+        <button onClick={(event) => {
+          this.beginStreamHandler()
+        }} className="begin-streaming-tweets" type="submit">Begin Streaming Tweets</button>
         <Keywords fetchLatest={this.fetchLatest} profileId={this.props.profileId} selectKeyword={this.selectKeywordIdHandler} keywordsArray={this.props.keywords} />
         <D3Table />
         <Tweets tweetsArray={this.props.tweets} />

@@ -27,6 +27,14 @@ const T = new Twit({
 
 const createSubscription = async (keyword, profileId) => {
   try {
+
+    if (keyword === 'init') {
+      const keywordInfoObj = await checkIfKeywordExists(keyword)
+      const streamKeywordsArray = keywordInfoObj.streamKeywordsArray
+      const stream = activateTwitStreamForAllKeywords(T, streamKeywordsArray)
+      return null;
+    }
+
     const keywordInfoObj = await checkIfKeywordExists(keyword)
     const exists = keywordInfoObj.found
 
