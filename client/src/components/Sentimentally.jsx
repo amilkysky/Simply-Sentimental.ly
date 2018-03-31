@@ -128,7 +128,8 @@ class Sentimentally extends React.Component {
       profileId: 1
     })
       .then((keywordIdResponse) => {
-        this.props.dispatch(actions.fetchTweets(keywordIdResponse))
+        console.log('keywordIdResponse chEK', keywordIdResponse)
+        this.props.dispatch(actions.fetchTweets(keywordIdResponse.data[0]))
       })
       .catch((error) => {
         console.log(error)
