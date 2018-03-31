@@ -16,4 +16,4 @@ db.plugin('registry')
 module.exports.db = db
 module.exports.knex = knex
 
-// require('./schema.js')
+require('./schema.js')
