@@ -16,8 +16,6 @@ class AxisY extends React.Component {
       .scale(y)
       .orient('left')
 
-    // y.domain(d3.extent(data, (d) => { return d.close }))
-
     d3.select('.y').call(yAxis)
       .append('text')
       .attr('transform', 'rotate(-90)')
