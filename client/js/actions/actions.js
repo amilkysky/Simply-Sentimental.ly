@@ -53,6 +53,8 @@ const getTweetsAjaxCall = (keywordId, dispatch) => {
     data: {selectedKeywordId: keywordId}
   })
 
+console.log('keywordId CHEK', keywordId)
+
   axios.get(`/tweets/${keywordId}`)
     .then((tweetsArray) => {
       let tweetData = tweetsArray.data
