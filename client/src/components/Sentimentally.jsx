@@ -124,7 +124,7 @@ class Sentimentally extends React.Component {
 
   beginStreamHandler () {
     axios.post('/subscribe', {
-      keyword: keywords[0],
+      keyword: this.props.keywords[0],
       profileId: 1
     })
       .then((keywordIdResponse) => {
