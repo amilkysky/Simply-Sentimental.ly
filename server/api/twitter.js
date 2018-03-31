@@ -28,8 +28,8 @@ const T = new Twit({
 const createSubscription = async (keyword, profileId) => {
   try {
     const keywordInfoObj = await checkIfKeywordExists(keyword)
+    
     const exists = keywordInfoObj.found
-
     let keywordIdResponse = keywordInfoObj.keywordIdResponse
     let streamKeywordsArray = keywordInfoObj.streamKeywordsArray
 
@@ -43,13 +43,10 @@ const createSubscription = async (keyword, profileId) => {
 
     const keywordIdExists = checkIfUserHasSubscription(subscripsArray, keywordIdResponse)
 
-    console.log('keywordIdExists cheK', keywordIdExists)
-
     let newSubscription
     if (!keywordIdExists) {
       newSubscription = await subscribeUserToKeyword(profileId, keywordIdResponse)
     }
-    console.log('twitter newSubscription chek', newSubscription)
 
     const stream = activateTwitStreamForAllKeywords(T, streamKeywordsArray)
 
