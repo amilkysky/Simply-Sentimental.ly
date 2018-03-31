@@ -18,6 +18,12 @@ class AxisX extends React.Component {
     x.domain(d3.extent(data, (d) => { return d.date }))
 
     d3.select('.x').attr('transform', 'translate(0,' + height + ')').call(xAxis)
+      .append('text')
+      .attr('x', 6)
+      .attr('dx', '.71em')
+      .style('text-anchor', 'end')
+      .text('Minutes Ago')
+
 
     return (
       <g className='x axis'></g>
