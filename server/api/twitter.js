@@ -27,27 +27,6 @@ const T = new Twit({
 
 const createSubscription = async (keyword, profileId) => {
   try {
-
-    if (keyword === 'init') {
-      const keywordInfoObj = await checkIfKeywordExists(keyword)
-      const streamKeywordsArray = keywordInfoObj.streamKeywordsArray
-      console.log('streamKeywordsArray CHEK', streamKeywordsArray)
-      const stream = activateTwitStreamForAllKeywords(T, streamKeywordsArray)
-
-      setTimeout(() => {
-        stream.on('tweet', async (tweetEvent) => {
-          tweetEvent = addTweetEventPropertiesIfNullData(tweetEvent)
-          const tweetIdResponse = await insertTweetsToDatabase(tweetEvent)
-          const score = calculateTweetSentimentScore(tweetEvent)
-          const insertedSentiment = await insertSentiment(score, tweetIdResponse, keywordIdResponse)
-        })
-
-        initDisconnectReconnectTwitStream(stream)
-      }, 2000)
-      
-      return null;
-    }
-
     const keywordInfoObj = await checkIfKeywordExists(keyword)
     const exists = keywordInfoObj.found
 

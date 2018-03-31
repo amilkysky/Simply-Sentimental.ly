@@ -124,11 +124,11 @@ class Sentimentally extends React.Component {
 
   beginStreamHandler () {
     axios.post('/subscribe', {
-      keyword: 'init',
+      keyword: keywords[0],
       profileId: 1
     })
-      .then((nullResponse) => {
-        this.props.dispatch(actions.fetchTweets(this.props.selectedKeywordId))
+      .then((keywordIdResponse) => {
+        this.props.dispatch(actions.fetchTweets(keywordIdResponse))
       })
       .catch((error) => {
         console.log(error)
