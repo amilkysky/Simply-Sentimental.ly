@@ -8,6 +8,7 @@ class Line extends React.Component {
     const height = this.props.height - margin.top - margin.bottom
     const width = this.props.width - margin.left - margin.right
 
+
     const x = d3.time.scale()
       .range([0, width])
 
@@ -19,7 +20,10 @@ class Line extends React.Component {
       .x((d) => { return x(d.date) })
       .y((d) => { return y(d.close) })
 
+console.log('data in Line.js', data)
+
     data.forEach((d) => {
+      console.log('data in forEach', d.close)
       x.domain(d3.extent(data, (d) => { return d.date }))
     })
 
