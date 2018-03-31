@@ -88,7 +88,6 @@ class Sentimentally extends React.Component {
     let keyword = event.target.value
     axios.get(`/keywordId/${keyword}`)
       .then((keywordId) => {
-        console.log('keywordId', keywordId)
         this.props.dispatch(actions.changeSelectedKeywordId(keywordId))
         this.initializeGraphSentiScores(keywordId.data[0].id)
 

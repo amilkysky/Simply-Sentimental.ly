@@ -17,7 +17,7 @@ knex.schema.createTableIfNotExists('profiles', function (table) {
 
 knex.schema.createTableIfNotExists('tweets', function (table) {
   table.increments('id').unsigned().primary()
-  table.string('tweeted_at').nullable() // ??? check on this
+  table.string('tweeted_at').nullable()
   table.string('url', 255).nullable() // previously 255
   table.string('text', 350).nullable()
   table.integer('retweet_count').nullable()
