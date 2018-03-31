@@ -61,6 +61,13 @@ router.get('/initializeD3/:keyword', async (req, res) => {
     averageRecentScore = Math.ceil(summedRecentScore / totalRecentTweets)
   }
 
+  if (averageRecentScore > 5) {
+    averageRecentScore = 5
+  }
+  if (averageRecentScore < -5) {
+    averageRecentScore = -5
+  }
+
   let date = -5
 
   sentiGraphScores.push({date: date, close: averageRecentScore})
@@ -76,6 +83,13 @@ router.get('/initializeD3/:keyword', async (req, res) => {
       const mappedPastScore = pastScore.map(score => score.sentiment)
       const summedScore = mappedPastScore.reduce((total, amount) => total + amount, 0)
       averageScore = Math.ceil(summedScore / totalTweets)
+    }
+
+    if (averageScore > 5) {
+      averageScore = 5
+    }
+    if (averageScore < -5) {
+      averageScore = -5
     }
 
     date -= 5

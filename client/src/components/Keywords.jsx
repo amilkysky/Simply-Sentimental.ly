@@ -42,6 +42,9 @@ class Keywords extends React.Component {
             return <option value={keyword} key={i}>{keyword}</option>
           })}
         </select>
+        <button onClick={(event) => {
+           this.props.dispatch(actions.fetchTweets(this.props.selectedKeywordId))
+        }} className="refresh-tweets" type="submit">Refresh Tweets</button>
       </div>
     )
   }
@@ -50,6 +53,7 @@ class Keywords extends React.Component {
 export default connect((state, props) => {
   return {
     profileId: state.keywordSubscription.profileId,
-    keywordInput: state.keywordSubscription.keywordInput
+    keywordInput: state.keywordSubscription.keywordInput,
+    selectedKeywordId: state.tweets.selectedKeywordId
   }
 })(Keywords)

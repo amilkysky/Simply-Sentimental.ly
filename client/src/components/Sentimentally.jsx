@@ -21,7 +21,7 @@ class Sentimentally extends React.Component {
 
     setInterval(() => {
       this.updateSentiGraphScores()
-    }, 5000)
+    }, 15000)
   }
 
   init (profileId) {
@@ -77,6 +77,13 @@ class Sentimentally extends React.Component {
 
       const summedScore = mappedLatestScores.reduce((total, amount) => total + amount, 0)
       averageScore = Math.ceil(summedScore / totalTweets)
+    }
+
+    if (averageScore > 5) {
+      averageScore = 5
+    }
+    if (averageScore < -5) {
+      averageScore = -5
     }
 
     newScores.unshift({date: -5, close: averageScore})
