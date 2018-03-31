@@ -13,6 +13,7 @@ class Line extends React.Component {
       .range([0, width])
 
     const y = d3.scale.linear()
+      .domain([-5, -5])
       .range([height, 0])
 
     const line = d3.svg.line()
