@@ -19,8 +19,8 @@ class AxisX extends React.Component {
 
     d3.select('.x').attr('transform', 'translate(0,' + height + ')').call(xAxis)
       .append('text')
-      .attr('x', 740)
-      .attr('y', 8)
+      .attr('x', 710)
+      .attr('y', -6)
       .attr('dx', '.71em')
       .style('text-anchor', 'end')
       .text('Minutes Ago')
