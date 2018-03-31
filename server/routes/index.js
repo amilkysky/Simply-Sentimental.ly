@@ -68,7 +68,7 @@ router.get('/initializeD3/:keyword', async (req, res) => {
     averageRecentScore = -5
   }
 
-  let date = -5
+  let date = -1
 
   sentiGraphScores.push({date: date, close: averageRecentScore})
 
@@ -92,9 +92,9 @@ router.get('/initializeD3/:keyword', async (req, res) => {
       averageScore = -5
     }
 
-    date -= 5
+    date -= 1
     sentiGraphScores.push({date: date, close: averageScore})
-    timeStampObj = makeDatetimeString(timeStampObj.time5MinAgo)
+    timeStampObj = makeDatetimeString(timeStampObj.time1MinAgo)
   }
   res.send(sentiGraphScores)
 })

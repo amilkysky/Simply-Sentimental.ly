@@ -21,7 +21,7 @@ class Sentimentally extends React.Component {
 
     setInterval(() => {
       this.updateSentiGraphScores()
-    }, 15000)
+    }, 60000)
   }
 
   init (profileId) {
@@ -64,7 +64,7 @@ class Sentimentally extends React.Component {
     scores.splice(scores.length - 1, 1)
 
     const newScores = scores.map(score => {
-      return {date: score.date - 5, close: score.close}
+      return {date: score.date - 1, close: score.close}
     })
 
     let totalTweets = latestScores.length
@@ -86,7 +86,7 @@ class Sentimentally extends React.Component {
       averageScore = -5
     }
 
-    newScores.unshift({date: -5, close: averageScore})
+    newScores.unshift({date: -1, close: averageScore})
 
     this.props.dispatch(actions.updateTweetSentiments(newScores))
   }

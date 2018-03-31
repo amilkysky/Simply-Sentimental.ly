@@ -41,12 +41,12 @@ const makeDatetimeString = (dateString) => {
 
   let timeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
   
-  if (minute >= 5) {
-    minute -= 5
+  if (minute >= 1) {
+    minute -= 1
     if (minute < 10) { minute = ('0' + minute) }
     const newTimeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
     
-    return {timeNow: timeStamp, time5MinAgo: newTimeStamp}
+    return {timeNow: timeStamp, time1MinAgo: newTimeStamp}
   } 
   
   minute = 60 - (5 - minute)
@@ -56,7 +56,7 @@ const makeDatetimeString = (dateString) => {
     if (hour < 10) { hour = ('0' + hour) }
     const newTimeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
 
-    return {timeNow: timeStamp, time5MinAgo: newTimeStamp}
+    return {timeNow: timeStamp, time1MinAgo: newTimeStamp}
   }
    
   hour = 23
@@ -66,7 +66,7 @@ const makeDatetimeString = (dateString) => {
     if (day < 10) { day = ('0' + day) }
     const newTimeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
 
-    return {timeNow: timeStamp, time5MinAgo: newTimeStamp}
+    return {timeNow: timeStamp, time1MinAgo: newTimeStamp}
   }
   
   if (month > 1) {
@@ -75,7 +75,7 @@ const makeDatetimeString = (dateString) => {
     if (month < 10) { month = ('0' + month) }
     const newTimeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
 
-    return {timeNow: timeStamp, time5MinAgo: newTimeStamp}
+    return {timeNow: timeStamp, time1MinAgo: newTimeStamp}
   }
   
   day = getLastDayOfPreviousMonth(12)
@@ -83,7 +83,7 @@ const makeDatetimeString = (dateString) => {
   year -= 1
     
   const newTimeStamp = `${year}/${month}/${day} ${hour}:${minute}:${second}`
-  return {timeNow: timeStamp, time5MinAgo: newTimeStamp}
+  return {timeNow: timeStamp, time1MinAgo: newTimeStamp}
 }
 
 module.exports = {
