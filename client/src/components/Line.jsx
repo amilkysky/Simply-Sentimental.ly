@@ -20,10 +20,7 @@ class Line extends React.Component {
       .x((d) => { return x(d.date) })
       .y((d) => { return y(d.close) })
 
-console.log('data in Line.js', data)
-
     data.forEach((d) => {
-      console.log('data in forEach', d.close)
       x.domain(d3.extent(data, (d) => { return d.date }))
     })
 
