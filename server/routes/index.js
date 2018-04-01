@@ -50,7 +50,7 @@ router.get('/initializeD3/:keyword', async (req, res) => {
   let timeStampObj = makeDatetimeString()
   const mostRecentScore = await knexHelpers.getLatestSentimentsByKeyword(req.params.keyword, timeStampObj)
   const filteredRecentScores = mostRecentScore.filter(score => score.sentiment !== 0)
-  let totalRecentTweets = mostRecentScore.length
+  let totalRecentTweets = filteredRecentScores.length
   let averageRecentScore = null
 
   if (totalRecentTweets === 0) {
@@ -74,7 +74,8 @@ router.get('/initializeD3/:keyword', async (req, res) => {
 
   for (let i = 0; i < 11; i++) {
     const pastScore = await knexHelpers.getSentimentsByKeywordWithinTimePeriod(req.params.keyword, timeStampObj)
-    let totalTweets = pastScore.length
+    const filteredPastScore = pastScore.filter(score => score.sentiment !== 0)
+    let totalTweets = filteredPastScore.length
     let averageScore = null
 
     if (totalTweets === 0) {
