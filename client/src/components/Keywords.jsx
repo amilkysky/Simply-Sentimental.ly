@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import * as actions from '../../js/actions/actions'
+import shortid from 'shortid'
 import { connect } from 'react-redux'
 
 class Keywords extends React.Component {
@@ -38,8 +39,8 @@ class Keywords extends React.Component {
         }} className="keyword-submit-button" type="submit">Subscribe</button>
 
         <select onChange={this.props.selectKeyword} >
-          {this.props.keywordsArray.map((keyword, i) => {
-            return <option value={keyword} key={i}>{keyword}</option>
+          {this.props.keywordsArray.map((keyword) => {
+            return <option value={keyword} key={shortid.generate()}>{keyword}</option>
           })}
         </select>
         <button onClick={(event) => {

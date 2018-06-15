@@ -1,5 +1,6 @@
 import React from 'react'
 import TweetEntry from './TweetEntry.jsx'
+import shortid from 'shortid'
 
 class Tweets extends React.Component {
   render () {
@@ -7,8 +8,8 @@ class Tweets extends React.Component {
     return (
       <div className="tweetsContainer">
         <ul>
-          {this.props.tweetsArray.map((tweet, i) => {
-            return <li key={i}><TweetEntry tweetEntry={tweet} /></li>
+          {this.props.tweetsArray.map((tweet) => {
+            return <li key={shortid.generate()}><TweetEntry tweetEntry={tweet} /></li>
           })}
         </ul>
       </div>
