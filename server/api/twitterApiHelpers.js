@@ -4,6 +4,8 @@ const sentiment = require('sentiment')
 const { server } = require('../app.js')
 require('dotenv').config()
 
+// TODO: Extract database calls to db/knexHelpers.js and import as helper functions
+// (for separation of concerns)
 
 const checkIfKeywordExists = async (keyword) => {
   let keywordsArray = await dbModule.knex.select('id', 'keyword').from('keywords')
